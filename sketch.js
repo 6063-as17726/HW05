@@ -6,7 +6,8 @@ let longitudeMin;
 let longitudeMax; 
 
 function preload() {
-  dataObject = loadJSON("./Tree-Census-2015.json");
+  let url = "https://dm-gy-6063-2023f-d.github.io/assets/homework/05/Tree-Census-2015/Tree-Census-2015.json"; 
+  dataObject = loadJSON(url);
 }
 
 function setup() {
@@ -16,16 +17,31 @@ function setup() {
     let latitude = data[i].latitude;
     let longitude = data[i].longitude;
 
-    latitudeMin = min(latitudeMin, price);
-    latitudeMax = max(latitudeMax, price);
-    longitudeMin = min(longitudeMin, points);
-    longitudeMax = max(longitudeMax, points);
+    latitudeMin = min(latitudeMin, latitude);
+    latitudeMax = max(latitudeMax, latitude);
+    longitudeMin = min(longitudeMin, longitude);
+    longitudeMax = max(longitudeMax, longitude);
   }
 }
 
 function draw() {
   background(0);
   for (let i = 0; i < data.length; i++) {
-    
+    let latitude = data[i].latitude; 
+    let longitude = data[i].longitude; 
+    let x = map(latitude,latitudeMin,latitudeMax,0, width); 
+    let y = map(longitude,longitudeMin,longitudeMax,0, height); 
+    if (data[i].health == "good") {
+      fill("ForestGreen"); 
+    }
+  else if (data[i].health == "fair") {
+    fill("YellowGreen"); 
+    }
+  else if (data[i].health == "poor") {
+    fill("Sienna"); 
+    }
+  ellipse(x,y,10,10);
+  //if (data[i].borough == "Brooklyn") {
+  //}
   }
 }
