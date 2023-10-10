@@ -46,7 +46,7 @@ function draw() {
     }
   }
 
-function mouseclicked() {
+function mouseClicked() {
   print(data[i].spc_common);
   return false;
 }
