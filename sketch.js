@@ -24,24 +24,29 @@ function setup() {
   }
 }
 
+
 function draw() {
-  background(0);
+  strokeWeight(1/4);
+  background(196,244, 255);
   for (let i = 0; i < data.length; i++) {
     let latitude = data[i].latitude; 
     let longitude = data[i].longitude; 
     let x = map(latitude,latitudeMin,latitudeMax,0, width); 
     let y = map(longitude,longitudeMin,longitudeMax,0, height); 
-    if (data[i].health == "good") {
+    if (data[i].health == "Good") {
       fill("ForestGreen"); 
     }
-  else if (data[i].health == "fair") {
-    fill("YellowGreen"); 
+    else if (data[i].health == "Fair") {
+      fill("DarkKhaki"); 
     }
-  else if (data[i].health == "poor") {
-    fill("Sienna"); 
+    else if (data[i].health == "Poor") {
+      fill("Sienna");
     }
-  ellipse(x,y,10,10);
-  //if (data[i].borough == "Brooklyn") {
-  //}
+    ellipse(x,y,5,5);
+    }
   }
+
+function mouseclicked() {
+  print(data[i].spc_common);
+  return false;
 }
